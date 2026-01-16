@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/">Back to search</a>
+    <div>
+      <h3><%= item.Title %></h3>
+      <p>Year: <%= item.Year %></p>
+      <p>Type: <%= item.Type %></p>
+      <p>Releases: <%= item.Released %></p>
+      <p>Genre: <%= item.Genre %></p>
+      <p>Writer: <%= item.Writer %></p>
+      <p>Actors: <%= item.Actors %></p>
+      <p>Plot: <%= item.Plot %></p>
+      <p>Languages: <%= item.Language %></p>
+      <p>Awards: <%= item.Awards %></p>
+      <img width="300px" src="<%= item.Poster %>" alt="<%= item.Title %>" />
+    </div>
+    <div>
+      <% if(!isUsersFavorite){ %>
+      <form
+        action="/users/<%= user._id %>/favorites/<%= item.imdbID %>?title=<%= item.Title %>"
+        method="POST"
+      >
+        <button type="submit">Add to Favorites</button>
+      </form>
+      <% } else { %>
+
+      <form
+        action="/users/<%= user._id %>/favorites/<%= item.imdbID %>?_method=DELETE"
+        method="POST"
+      >
+        <button type="submit">Unfavorite Media</button>
+      </form>
+
+      <% } %>
+    </div>
+  </body>
+</html>

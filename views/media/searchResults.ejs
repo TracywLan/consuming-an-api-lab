@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Back to Search</a>
+    <% media.forEach(item => { %>
+        <a href="/media/<%= item.imdbID %>">
+            <div>
+                <h3><%= item.Title %></h3>
+                <p>OMDBID: <%= item.imdbID %></p>
+                <p>Year: <%= item.Year %></p>
+                <p>Type: <%= item.Type %></p>
+                <img width="300px" src="<%= item.Poster %>" alt="<%= item.Title %>">
+            </div>
+        </a>
+    <% }) %>
+</body>
+</html>
