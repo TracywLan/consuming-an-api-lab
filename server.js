@@ -17,7 +17,6 @@ require("./db/connection");
 app.use(morgan("tiny"));
 app.use(methodOverride("_method"));
 app.use(express.json());
-app.use(methodOverride('_method'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({

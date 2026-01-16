@@ -7,9 +7,16 @@ const User = require('../models/user')
 router.get("/:mediaId", async (req, res) => {
   const response = await fetch(`${dbUrl}i=${req.params.mediaId}`);
   const item = await response.json();
-  const user = await User.findById(req.session.user._id)
-  const isUsersFavorite = user.favoriteMovie?.imdbID === req.params.mediaId
 
+  let user = null;
+  let isUsersFavorite = false;
+
+  if (req.session.user && req.session.user._id) {
+    user = await User.findById(req.session.user._id);
+    if (user) {
+      isUsersFavorite = user.favoriteMovie?.imdbID === req.params.mediaId;
+    }
+  }
   res.render('media/show.ejs', { item, isUsersFavorite, user: req.session.user })
 });
 
