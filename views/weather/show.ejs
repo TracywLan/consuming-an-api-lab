@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show weather</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="weather-card">
+    <h1 class="city-name"><%= weatherData.name %>, <%= weatherData.sys.country %></h1>
+    
+    <div class="temp"><%= Math.round(weatherData.main.temp) %>°F</div>
+    
+    <div class="description">
+      <%= weatherData.weather[0].description %>
+    </div>
+    
+    <div class="details-grid">
+      <div class="detail-item">
+        <div class="detail-label">Feels Like</div>
+        <div class="detail-value"><%= Math.round(weatherData.main.feels_like) %>°F</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Humidity</div>
+        <div class="detail-value"><%= weatherData.main.humidity %>%</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Wind</div>
+        <div class="detail-value"><%= Math.round(weatherData.wind.speed) %> mph</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-label">Pressure</div>
+        <div class="detail-value"><%= weatherData.main.pressure %> hPa</div>
+      </div>
+    </div>
+    <div class="back-btn">
+        <a href="/">Back to Home!</a>
+    </div>
+    </div>
+</body>
+</html>

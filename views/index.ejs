@@ -3,23 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home Page</title>
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/css/style.css">
   </head>
   <body>
-    <% if(user) { %> Welcome back <%= user.username %>
-    <p>
-      <a href="/auth/sign-out">Sign Out</a>
-    </p>
-    <% } else { %>
-    <a href="/auth/sign-up">Sign Up</a>
-    <a href="/auth/sign-in">Sign In</a>
-    <h1>Welcome to the App</h1>
-    <% } %>
-
-    <form action="/media/search" method="POST">
-      <label for="searchTerm">Search Term: </label>
-      <input type="text" id="searchTerm" name="searchTerm" placeholder="Enter a movie title or name">
-      <button type="submit">Search</button>
+    <div class="container">
+    <h1>Weather Lookup</h1>
+    <form action="/weather" method="get">
+      <div class="form-group">
+      <input type="number" name="zip" id="zip" placeholder="Enter ZIP (ex: 10001)" required maxlength="5">
+      </div>
+      <div class="weather-btn">
+        <button type="submit">Get Weather</button>
+      </div>
     </form>
+    </div>
   </body>
 </html>
